@@ -13,11 +13,15 @@ import base64 as _b64
 # Image loader
 def _img_b64(filename):
     import os
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', filename)
-    if not os.path.exists(path):
-        return ''
-    with open(path, 'rb') as fh:
-        return _b64.b64encode(fh.read()).decode()
+    # Search in app/assets/ and root assets/ (works locally and on Streamlit Cloud)
+    app_dir  = os.path.dirname(os.path.abspath(__file__))
+    root_dir = os.path.dirname(app_dir)
+    for base in [app_dir, root_dir]:
+        path = os.path.join(base, 'assets', filename)
+        if os.path.exists(path):
+            with open(path, 'rb') as fh:
+                return _b64.b64encode(fh.read()).decode()
+    return ''
 
 def _bg_css(b64, mime='image/avif'):
     if not b64:
@@ -31,12 +35,10 @@ IMG_CROP   = _img_b64('crop.avif')
 
 
 # ══════════════════════════════════════════════════════════════
-# ══════════════════════════════════════════════════════════════
-# ══════════════════════════════════════════════════════════════
 # PATH SETUP
 # ══════════════════════════════════════════════════════════════
-BASE_DIR   = os.path.dirname(os.path.abspath(__file__))   # → .../app/
-ROOT_DIR   = os.path.dirname(BASE_DIR)                    # → one level up
+BASE_DIR   = os.path.dirname(os.path.abspath(__file__))  # .../app/
+ROOT_DIR   = os.path.dirname(BASE_DIR)                   # one level up (repo root)
 DATA_PATH  = os.path.join(ROOT_DIR, 'data', 'raw', 'crop_yield.csv')
 MODEL_DIR  = os.path.join(ROOT_DIR, 'notebooks', 'models')
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'notebooks', 'outputs')
