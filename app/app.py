@@ -31,13 +31,16 @@ IMG_CROP   = _img_b64('crop.avif')
 
 
 # ══════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════
 # PATH SETUP
 # ══════════════════════════════════════════════════════════════
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH  = os.path.join(BASE_DIR, 'data', 'raw', 'crop_yield.csv')
-MODEL_DIR  = os.path.join(BASE_DIR, 'notebooks', 'models')
-OUTPUT_DIR = os.path.join(BASE_DIR, 'notebooks', 'outputs')
-PLOTS_DIR  = os.path.join(BASE_DIR, 'notebooks', 'outputs', 'plots')
+BASE_DIR   = os.path.dirname(os.path.abspath(__file__))   # → .../app/
+ROOT_DIR   = os.path.dirname(BASE_DIR)                    # → one level up
+DATA_PATH  = os.path.join(ROOT_DIR, 'data', 'raw', 'crop_yield.csv')
+MODEL_DIR  = os.path.join(ROOT_DIR, 'notebooks', 'models')
+OUTPUT_DIR = os.path.join(ROOT_DIR, 'notebooks', 'outputs')
+PLOTS_DIR  = os.path.join(ROOT_DIR, 'notebooks', 'outputs', 'plots')
 
 # ══════════════════════════════════════════════════════════════
 # CONSTANTS
