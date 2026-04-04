@@ -1,0 +1,17 @@
+
+=======================================================
+  CROP YIELD PREDICTION — FINAL EVALUATION REPORT
+=======================================================
+  Best Model       : XGBoost
+  Train years      : 1997 – 2015
+  Test years       : 2016 – 2020
+  Train samples    : 15,404
+  Test samples     : 4,285
+  Features used    : 13
+───────────────────────────────────────────────────────
+  R² Score         : 0.9274
+  RMSE (log-space) : 0.2989
+  MAE  (log-space) : 0.1918
+  RMSE (real)      : 172.43 tonnes/ha
+  MAE  (real)      : 13.59 tonnes/ha
+=======================================================
